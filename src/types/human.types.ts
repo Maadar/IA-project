@@ -22,3 +22,7 @@ export interface HumanTypes {
   adam: HumanProps;
   ewa: HumanProps;
 }
+
+export interface StoreType {
+  pioneers: HumanTypes;
+}
