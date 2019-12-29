@@ -1,11 +1,7 @@
-import {HumanProps, HumansTypes} from "../../types/human.types";
+import {HumanProps} from "../../types/human.types";
 import {ADD_HUMAN} from "./human_factory.actions";
 import uuid from "uuid";
 import {generateRandomName, getGender} from "../../utils/names.provider";
-
-const initialState: HumansTypes = {
-  humans: []
-};
 
 const createNewHuman = (): HumanProps => {
   const gender = getGender();
@@ -29,12 +25,10 @@ const createNewHuman = (): HumanProps => {
   };
 };
 
-const Humans = (state = initialState, action): any => {
+const Humans = (state = [], action): any => {
   switch (action.type) {
     case ADD_HUMAN:
-      return {
-        humans: [...state.humans, createNewHuman()]
-      };
+      return [...state, createNewHuman()];
 
     default:
       return state;
