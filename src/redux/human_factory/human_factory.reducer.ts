@@ -1,7 +1,7 @@
 import {HumanProps} from "../../types/human.types";
-import {ADD_HUMAN} from "./human_factory.actions";
+import {ADD_HUMAN, INCREASE_AGE} from "./human_factory.actions";
 import uuid from "uuid";
-import {generateRandomName, getGender} from "../../utils/names.provider";
+import {generateRandomName, getGender, getSurname} from "../../utils/names.provider";
 
 const createNewHuman = (): HumanProps => {
   const gender = getGender();
@@ -9,7 +9,7 @@ const createNewHuman = (): HumanProps => {
   return {
     id: uuid(),
     name: generateRandomName(gender),
-    surname: 'Kowalski',
+    surname: getSurname(gender),
     gender: gender,
     age: 0,
     isCrossable: false,
@@ -25,11 +25,19 @@ const createNewHuman = (): HumanProps => {
   };
 };
 
-const Humans = (state = [], action): any => {
+const Humans = (state = [], action): void[] => {
   switch (action.type) {
     case ADD_HUMAN:
       return [...state, createNewHuman()];
 
+    case INCREASE_AGE:
+      state.map((human) => {
+        if (human.id === action.id) {
+          ++human.age;
+        }
+        return human;
+      });
+      return [...state];
     default:
       return state;
   }

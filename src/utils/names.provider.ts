@@ -159,4 +159,12 @@ export const getGender = () => {
   return gender[index];
 };
 
+export const getSurname = (gender: string): string => {
+  if (gender.toLowerCase().trim() === 'female') {
+    return 'Kowalska';
+  } else {
+    return 'Kowalski';
+  }
+};
+
 export default generateRandomName;
