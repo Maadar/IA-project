@@ -1,39 +1,45 @@
 import {ActionTypes, DECREMENT, INCREMENT} from './pioneers.types';
-import {HumanTypes} from '../../types/human.types';
+import {PioneersTypes} from '../../types/human.types';
 import uuid from "uuid/v4";
 
 const initialState = {
   adam: {
     id: uuid(),
     name: 'Adam',
+    surname: 'Kowalski',
     age: 20,
     isCrossable: true,
+    gender: 'male',
     family: [],
     features: {
       intelligence: 8,
       luck: 4,
       strength: 8,
-      vital: 5,
+      health: 5,
       speed: 7,
+      appearance: 4,
     },
   },
   ewa: {
     id: uuid(),
     name: 'Ewa',
+    surname: 'Kowalska',
     age: 20,
+    gender: 'female',
     isCrossable: true,
     family: [],
     features: {
       intelligence: 3,
       luck: 7,
       strength: 5,
-      vital: 8,
+      health: 8,
       speed: 4,
+      appearance: 7,
     },
   }
 };
 
-function Pioneers(state = initialState, action: ActionTypes): HumanTypes {
+const Pioneers = (state = initialState, action: ActionTypes): PioneersTypes => {
   switch (action.type) {
     case INCREMENT:
       return {
@@ -56,6 +62,6 @@ function Pioneers(state = initialState, action: ActionTypes): HumanTypes {
     default:
       return state;
   }
-}
+};
 
 export default Pioneers;
