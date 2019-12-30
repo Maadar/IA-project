@@ -28,7 +28,7 @@ export interface PioneersTypes {
   ewa: HumanProps;
 }
 
-export interface HumansTypes {
+export interface HumansTypes extends Array<any> {
   humans : HumanProps[] | []
 }
 
