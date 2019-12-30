@@ -1,4 +1,4 @@
-import {ActionTypes, DECREMENT, INCREMENT} from './pioneers.types';
+import {ActionTypes, DECREMENT_PIONEERS_AGE, INCREMENT_PIONEERS_AGE} from './pioneers.types';
 import {PioneersTypes} from '../../types/human.types';
 import uuid from "uuid/v4";
 
@@ -41,21 +41,29 @@ const initialState = {
 
 const Pioneers = (state = initialState, action: ActionTypes): PioneersTypes => {
   switch (action.type) {
-    case INCREMENT:
+    case INCREMENT_PIONEERS_AGE:
       return {
         ...state,
         ewa: {
           ...state.ewa,
           age: ++state.ewa.age
+        },
+        adam: {
+          ...state.adam,
+          age: ++state.adam.age
         }
       };
 
-    case DECREMENT:
+    case DECREMENT_PIONEERS_AGE:
       return {
         ...state,
         ewa: {
           ...state.ewa,
           age: --state.ewa.age
+        },
+        adam: {
+          ...state.adam,
+          age: --state.adam.age
         }
       };
 

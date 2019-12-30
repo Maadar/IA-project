@@ -1,14 +1,14 @@
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+export const INCREMENT_PIONEERS_AGE = 'INCREMENT_PIONEERS_AGE';
+export const DECREMENT_PIONEERS_AGE = 'DECREMENT_PIONEERS_AGE';
 
-export interface IncrementType {
-  type: typeof INCREMENT;
+export interface IncrementPioneersAgeType {
+  type: typeof INCREMENT_PIONEERS_AGE;
 }
 
-export interface DecrementType {
-  type: typeof DECREMENT;
+export interface DecrementPioneersAgeType {
+  type: typeof DECREMENT_PIONEERS_AGE;
 }
 
 export type ActionTypes =
-  IncrementType |
-  DecrementType;
+  IncrementPioneersAgeType |
+  DecrementPioneersAgeType;

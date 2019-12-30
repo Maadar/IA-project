@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Decrement, Increment} from './redux/pioneers/pioneers.actions';
+import {incrementPioneersAge} from './redux/pioneers/pioneers.actions';
 import {addHuman, increaseAge} from './redux/human_factory/human_factory.actions';
 import {increaseYear} from './redux/year/year.actions';
 import {useDispatch, useSelector} from 'react-redux';
@@ -17,7 +17,9 @@ const App: React.FC = () => {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     timerID = setTimeout(() => {
-      dispatch(increaseYear());
+      // dispatch(addHuman());
+      // dispatch(increaseYear());
+      // dispatch(incrementPionersAge());
     }, delay * 1000);
     return () => clearTimeout(timerID);
   }, [year, delay]);
@@ -30,23 +32,18 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <button onClick={() => dispatch(Increment())}>Increment</button>
-      <button onClick={() => dispatch(Decrement())}>Decrement</button>
       <button onClick={() => dispatch(addHuman())}>Add New Human</button>
-
       <input type="number" name="delay" value={delay} onChange={(e) => handleOnChangeDelay(e)} />
 
       <h1>Start</h1>
 
+      <p>Current Year: {year}</p>
       <p>{pioneers.adam.name} {pioneers.adam.age}</p>
       <p>{pioneers.ewa.name} {pioneers.ewa.age}</p>
 
       {humans.map((human: HumanProps) => (
         <h2 onClick={() => dispatch(increaseAge(human.id))} key={human.id}>{human.name} {human.age}</h2>
       ))}
-
-      <p>Current Year: {year}</p>
-
     </div>
   );
 };

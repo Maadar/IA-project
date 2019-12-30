@@ -1,9 +1,9 @@
-import {DECREMENT, DecrementType, INCREMENT, IncrementType} from './pioneers.types';
+import {INCREMENT_PIONEERS_AGE, DECREMENT_PIONEERS_AGE, DecrementPioneersAgeType, IncrementPioneersAgeType} from './pioneers.types';
 
-export const Increment = (): IncrementType => ({
-  type: INCREMENT
+export const incrementPioneersAge = (): IncrementPioneersAgeType => ({
+  type: INCREMENT_PIONEERS_AGE
 });
 
-export const Decrement = (): DecrementType => ({
-  type: DECREMENT
+export const decrementPioneersAge = (): DecrementPioneersAgeType => ({
+  type: DECREMENT_PIONEERS_AGE
 });
