@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {incrementPioneersAge} from './redux/pioneers/pioneers.actions';
-import {addHuman, increaseAge} from './redux/human_factory/human_factory.actions';
+import {addHuman, increaseHumansAge} from './redux/human_factory/human_factory.actions';
 import {increaseYear} from './redux/year/year.actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {HumanProps, HumansTypes, PioneersTypes, StoreType} from "./types/human.types";
@@ -19,7 +19,8 @@ const App: React.FC = () => {
     timerID = setTimeout(() => {
       // dispatch(addHuman());
       // dispatch(increaseYear());
-      // dispatch(incrementPionersAge());
+      // dispatch(incrementPioneersAge());
+      // dispatch(increaseHumansAge())
     }, delay * 1000);
     return () => clearTimeout(timerID);
   }, [year, delay]);
@@ -42,7 +43,7 @@ const App: React.FC = () => {
       <p>{pioneers.ewa.name} {pioneers.ewa.age}</p>
 
       {humans.map((human: HumanProps) => (
-        <h2 onClick={() => dispatch(increaseAge(human.id))} key={human.id}>{human.name} {human.age}</h2>
+        <h2 onClick={() => dispatch(increaseHumansAge())} key={human.id}>{human.name} {human.age}</h2>
       ))}
     </div>
   );

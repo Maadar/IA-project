@@ -9,6 +9,7 @@ export interface FeaturesProps {
   appearance: number,
 }
 
+// TODO add max age
 export interface HumanDetailsProps {
   id: string;
   name: string;

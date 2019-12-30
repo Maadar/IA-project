@@ -1,5 +1,5 @@
 import {HumanProps} from "../../types/human.types";
-import {ADD_HUMAN, INCREASE_AGE} from "./human_factory.types";
+import {ADD_HUMAN, INCREASE_HUMANS_AGE} from "./human_factory.types";
 import uuid from "uuid";
 import {generateRandomName, getGender, getSurname} from "../../utils/names.provider";
 import {ActionTypes} from "./human_factory.types";
@@ -31,14 +31,14 @@ const Humans = (state = [], action: ActionTypes): HumanProps[] => {
     case ADD_HUMAN:
       return [...state, createNewHuman()];
 
-    case INCREASE_AGE:
-      state.map((human: HumanProps) => {
-        if (human.id === action.id) {
-          ++human.age;
-        }
-        return human;
+    case INCREASE_HUMANS_AGE:
+      return state.map((human: HumanProps) => {
+        return {
+          ...human,
+          age: ++human.age
+        };
       });
-      return [...state];
+
     default:
       return state;
   }

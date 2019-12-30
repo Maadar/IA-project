@@ -1,10 +1,9 @@
-import {ADD_HUMAN, IAddHuman, IIncreaseYear, INCREASE_AGE} from './human_factory.types';
+import {ADD_HUMAN, IAddHuman, IIncreaseHumansAge, INCREASE_HUMANS_AGE} from './human_factory.types';
 
 export const addHuman = (): IAddHuman => ({
   type: ADD_HUMAN
 });
 
-export const increaseAge = (id: string): IIncreaseYear => ({
-  type: INCREASE_AGE,
-  id
+export const increaseHumansAge = (): IIncreaseHumansAge => ({
+  type: INCREASE_HUMANS_AGE,
 });

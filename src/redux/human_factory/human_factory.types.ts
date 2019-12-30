@@ -1,15 +1,14 @@
 export const ADD_HUMAN = 'ADD_HUMAN';
-export const INCREASE_AGE = 'INCREASE_AGE';
+export const INCREASE_HUMANS_AGE = 'INCREASE_HUMANS_AGE';
 
 export interface IAddHuman {
   type: typeof ADD_HUMAN;
 }
 
-export interface IIncreaseYear {
-  type: typeof INCREASE_AGE;
-  id: string;
+export interface IIncreaseHumansAge {
+  type: typeof INCREASE_HUMANS_AGE;
 }
 
 export type ActionTypes =
   IAddHuman |
-  IIncreaseYear;
+  IIncreaseHumansAge;
