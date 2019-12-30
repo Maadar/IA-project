@@ -1,3 +1,5 @@
+import {IYear} from '../redux/year/year.types';
+
 export interface FeaturesProps {
   intelligence: number;
   luck: number;
@@ -33,4 +35,5 @@ export interface HumansTypes {
 export interface StoreType {
   pioneers: PioneersTypes;
   humans: HumansTypes;
+  year: IYear;
 }
