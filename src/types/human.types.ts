@@ -10,6 +10,7 @@ export interface FeaturesProps {
 }
 
 // TODO add max age
+// TODO add mother and father keys
 export interface HumanDetailsProps {
   id: string;
   name: string;
@@ -17,6 +18,7 @@ export interface HumanDetailsProps {
   age: number;
   gender: string;
   isCrossable: boolean;
+  dieBetween: number[];
   features: FeaturesProps;
 }
 

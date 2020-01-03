@@ -3,6 +3,7 @@ import {ADD_HUMAN, INCREASE_HUMANS_AGE} from "./human_factory.types";
 import uuid from "uuid";
 import {generateRandomName, getGender, getSurname} from "../../utils/names.provider";
 import {ActionTypes} from "./human_factory.types";
+import {generateApproximateAge} from "../../utils/helpers";
 
 const createNewHuman = (): HumanProps => {
   const gender = getGender();
@@ -15,6 +16,7 @@ const createNewHuman = (): HumanProps => {
     age: 0,
     isCrossable: false,
     family: [],
+    dieBetween: generateApproximateAge(),
     features: {
       intelligence: 0,
       luck: 0,

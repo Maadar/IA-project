@@ -1,4 +1,4 @@
-import {ActionTypes, DECREMENT_PIONEERS_AGE, INCREMENT_PIONEERS_AGE} from './pioneers.types';
+import {ActionTypes, DECREMENT_PIONEERS_AGE, INCREMENT_PIONEERS_AGE, KILL_PIONEERS} from './pioneers.types';
 import {PioneersTypes} from '../../types/human.types';
 import uuid from "uuid/v4";
 
@@ -11,6 +11,7 @@ const initialState = {
     isCrossable: true,
     gender: 'male',
     family: [],
+    dieBetween: [35, 35],
     features: {
       intelligence: 8,
       luck: 4,
@@ -28,6 +29,7 @@ const initialState = {
     gender: 'female',
     isCrossable: true,
     family: [],
+    dieBetween: [35, 35],
     features: {
       intelligence: 3,
       luck: 7,
@@ -66,6 +68,12 @@ const Pioneers = (state = initialState, action: ActionTypes): PioneersTypes => {
           age: --state.adam.age
         }
       };
+
+    case KILL_PIONEERS:
+      let copy = Object.assign({}, state);
+      // @ts-ignore
+      delete copy[action.pioneer];
+      return copy;
 
     default:
       return state;
