@@ -18,7 +18,8 @@ export interface HumanDetailsProps {
   age: number;
   gender: string;
   isCrossable: boolean;
-  dieBetween: number[];
+  startDying: number;
+  isDead: boolean;
   features: FeaturesProps;
 }
 

@@ -9,3 +9,8 @@ export const canPioneersCross = (adam: HumanProps, ewa: HumanProps): boolean => 
 
   return canAdamCross && canEwaCross;
 };
+
+export const tryCross = (): boolean => {
+  const score = Math.floor(Math.random() * 10 + 1);
+  return score >= 3 && score <= 10;
+};

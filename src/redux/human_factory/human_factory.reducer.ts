@@ -1,8 +1,7 @@
 import {HumanProps} from "../../types/human.types";
-import {ADD_HUMAN, INCREASE_HUMANS_AGE} from "./human_factory.types";
+import {ActionTypes, ADD_HUMAN, INCREASE_HUMANS_AGE, KILL_HUMAN} from "./human_factory.types";
 import uuid from "uuid";
 import {generateRandomName, getGender, getSurname} from "../../utils/names.provider";
-import {ActionTypes} from "./human_factory.types";
 import {generateApproximateAge} from "../../utils/helpers";
 
 const createNewHuman = (): HumanProps => {
@@ -16,7 +15,8 @@ const createNewHuman = (): HumanProps => {
     age: 0,
     isCrossable: false,
     family: [],
-    dieBetween: generateApproximateAge(),
+    isDead: false,
+    startDying: generateApproximateAge(),
     features: {
       intelligence: 0,
       luck: 0,
@@ -40,6 +40,11 @@ const Humans = (state = [], action: ActionTypes): HumanProps[] => {
           age: ++human.age
         };
       });
+
+    case KILL_HUMAN:
+      const withoutDeadHuman = state.filter((human: HumanProps) => human.id !== action.id);
+
+      return [...withoutDeadHuman];
 
     default:
       return state;

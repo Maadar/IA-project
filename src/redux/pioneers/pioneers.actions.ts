@@ -1,21 +1,26 @@
 import {
-  DECREMENT_PIONEERS_AGE,
-  DecrementPioneersAgeType,
-  INCREMENT_PIONEERS_AGE,
-  IncrementPioneersAgeType,
-  KILL_PIONEERS,
-  KillPioneersType
+  INCREMENT_ADAM_AGE,
+  INCREMENT_EWA_AGE,
+  KILL_ADAM,
+  KILL_EWA,
+  KillAdamType,
+  KillEwamType,
+  IncrementAdamAgeType,
+  IncrementEwaAgeType,
 } from './pioneers.types';
 
-export const incrementPioneersAge = (): IncrementPioneersAgeType => ({
-  type: INCREMENT_PIONEERS_AGE
+export const incrementAdamAge = (): IncrementAdamAgeType => ({
+  type: INCREMENT_ADAM_AGE
 });
 
-export const decrementPioneersAge = (): DecrementPioneersAgeType => ({
-  type: DECREMENT_PIONEERS_AGE
+export const incrementEwaAge = (): IncrementEwaAgeType => ({
+  type: INCREMENT_EWA_AGE
 });
 
-export const killPioneers = (pioneer: string): KillPioneersType => ({
-  type: KILL_PIONEERS,
-  pioneer
+export const killAdam = (): KillAdamType => ({
+  type: KILL_ADAM
+});
+
+export const killEwa = (): KillEwamType => ({
+  type: KILL_EWA
 });

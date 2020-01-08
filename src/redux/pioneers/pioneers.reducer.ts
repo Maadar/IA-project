@@ -1,4 +1,4 @@
-import {ActionTypes, DECREMENT_PIONEERS_AGE, INCREMENT_PIONEERS_AGE, KILL_PIONEERS} from './pioneers.types';
+import {ActionTypes, INCREMENT_ADAM_AGE, INCREMENT_EWA_AGE, KILL_ADAM, KILL_EWA} from './pioneers.types';
 import {PioneersTypes} from '../../types/human.types';
 import uuid from "uuid/v4";
 
@@ -11,7 +11,8 @@ const initialState = {
     isCrossable: true,
     gender: 'male',
     family: [],
-    dieBetween: [35, 35],
+    startDying: 35,
+    isDead: false,
     features: {
       intelligence: 8,
       luck: 4,
@@ -29,7 +30,8 @@ const initialState = {
     gender: 'female',
     isCrossable: true,
     family: [],
-    dieBetween: [35, 35],
+    startDying: 40,
+    isDead: false,
     features: {
       intelligence: 3,
       luck: 7,
@@ -43,37 +45,41 @@ const initialState = {
 
 const Pioneers = (state = initialState, action: ActionTypes): PioneersTypes => {
   switch (action.type) {
-    case INCREMENT_PIONEERS_AGE:
+    case INCREMENT_ADAM_AGE:
       return {
         ...state,
-        ewa: {
-          ...state.ewa,
-          age: ++state.ewa.age
-        },
         adam: {
           ...state.adam,
           age: ++state.adam.age
         }
       };
 
-    case DECREMENT_PIONEERS_AGE:
+    case INCREMENT_EWA_AGE:
       return {
         ...state,
         ewa: {
           ...state.ewa,
-          age: --state.ewa.age
+          age: ++state.ewa.age
         },
+      };
+
+    case KILL_ADAM:
+      return {
+        ...state,
         adam: {
           ...state.adam,
-          age: --state.adam.age
+          isDead: true
         }
       };
 
-    case KILL_PIONEERS:
-      let copy = Object.assign({}, state);
-      // @ts-ignore
-      delete copy[action.pioneer];
-      return copy;
+    case KILL_EWA:
+      return {
+        ...state,
+        ewa: {
+          ...state.ewa,
+          isDead: true
+        }
+      };
 
     default:
       return state;
