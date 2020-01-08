@@ -17,6 +17,7 @@ const App: React.FC = () => {
   let timerID: NodeJS.Timeout;
 
   useEffect(() => {
+    console.log('test');
     // eslint-disable-next-line react-hooks/exhaustive-deps
     timerID = setTimeout(() => {
       cross(humans, pioneers);
